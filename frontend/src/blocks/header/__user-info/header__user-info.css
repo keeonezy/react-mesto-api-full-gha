@@ -1,0 +1,11 @@
+.header__user-info {
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+}
+
+@media screen and (max-width: 940px) {
+    .header__user-info {
+        display: none;
+    }
+}

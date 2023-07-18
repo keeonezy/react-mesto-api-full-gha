@@ -1,0 +1,19 @@
+.profile__info {
+    max-width: 336px;
+    min-height: 73px;
+    display: grid;
+    grid-template-areas:
+        "title button-edit"
+        "about about";
+    gap: 8px 18px;
+}
+
+@media screen and (max-width: 940px) {
+    .profile__info {
+        margin-top: 26px;
+        margin-bottom: 32px;
+        max-width: 282px;
+        min-height: 54px;
+        gap: 8px 10px;
+    }
+}

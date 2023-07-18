@@ -1,0 +1,19 @@
+.auth__input {
+    margin-bottom: 30px;
+    width: 100%;
+    min-height: 27px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #CCCCCC;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #CCCCCC;
+    outline: none;
+}
+
+.auth__input:last-of-type {
+    margin-bottom: 173px;
+}

@@ -1,0 +1,11 @@
+.auth_form {
+    max-width: 358px;
+    min-height: 84px;
+    text-align: center;
+}
+
+@media screen and (max-width: 320px) {
+    .auth_form {
+        max-width: 260px;
+    }
+}

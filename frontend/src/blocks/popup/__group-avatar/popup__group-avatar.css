@@ -1,0 +1,9 @@
+.popup__group-avatar {
+    min-height: 272px;
+}
+
+@media screen and (max-width: 940px) {
+    .popup__group-avatar {
+        min-height: 322px;
+    }
+}

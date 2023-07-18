@@ -1,0 +1,7 @@
+.popup__section {
+    margin-top: 25px;
+}
+
+.popup__section:first-of-type {
+    margin-top: 0px;
+}

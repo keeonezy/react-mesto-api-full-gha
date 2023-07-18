@@ -1,0 +1,15 @@
+.header__burger {
+    background: url("../../../images/icon/burger.svg");
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 21px;
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 940px) {
+    .header__burger {
+        margin-right: 30px;
+        display: block;
+    }
+}
