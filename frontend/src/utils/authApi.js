@@ -51,6 +51,6 @@ class Auth {
     };
 }
 
-const auth = new Auth("https://auth.nomoreparties.co");
+const auth = new Auth("https://b-keeonenew.nomoredomains.xyz");
 
 export default auth;

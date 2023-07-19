@@ -94,9 +94,9 @@ class Api {
 
 // Данные для получения доступа к API предоставленный практикумом
 const api = new Api({
-    baseUrl: "https://mesto.nomoreparties.co/v1/cohort-64",
+    baseUrl: "https://b-keeonenew.nomoredomains.xyz",
     headers: {
-        authorization: "2b912826-2e01-41bd-a2c8-a9cb197269a0",
+        // authorization: "2b912826-2e01-41bd-a2c8-a9cb197269a0",
         "Content-Type": "application/json"
     }
 });
