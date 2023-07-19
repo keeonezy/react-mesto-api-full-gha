@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./routes');
 const { PORT, urlBD } = require('./config');
 
@@ -18,9 +19,15 @@ mongoose.connection.on('error', () => console.log('Бд сломалась - '))
 app.use(cookieParser());
 app.use(express.json());
 
+app.use(requestLogger); // подключаем логгер запросов
+
 app.use(router);
 
-app.use(errors());
+app.use(errorLogger); // логгер ошибок
+
+app.use(errors()); // обработчик ошибок celebrate
+
+// централизованный обработчик ошибок
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
   res.status(statusCode)
