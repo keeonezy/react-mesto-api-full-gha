@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { cors } = require('./middlewares/cors');
 const router = require('./routes');
 const { PORT, urlBD } = require('./config');
 
@@ -19,6 +20,7 @@ mongoose.connection.on('error', () => console.log('Бд сломалась - '))
 app.use(cookieParser());
 app.use(express.json());
 
+app.use(cors); // проверяем cors запросы
 app.use(requestLogger); // подключаем логгер запросов
 
 app.use(router);
