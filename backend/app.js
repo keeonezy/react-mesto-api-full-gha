@@ -2,7 +2,6 @@
 const express = require('express');
 // Для работы с БД
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
@@ -11,17 +10,22 @@ const { PORT, urlBD } = require('./config');
 
 // Создаем сервер
 const app = express();
+app.use(cors); // проверяем cors запросы
 
 // Подключаемся к БД
 mongoose.connect(urlBD);
 mongoose.connection.on('connected', () => console.log('Связь с БД установлена'));
 mongoose.connection.on('error', () => console.log('Бд сломалась - '));
 
-app.use(cookieParser());
 app.use(express.json());
 
-app.use(cors); // проверяем cors запросы
 app.use(requestLogger); // подключаем логгер запросов
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(router);
 
