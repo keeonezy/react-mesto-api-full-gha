@@ -17,7 +17,7 @@ module.exports.createCard = (req, res, next) => {
 
   Card.create(body)
     // 201 статус должен быть успешным
-    .then((card) => res.status(STATUS_CREATED).send({ data: card }))
+    .then((card) => res.status(STATUS_CREATED).send(card))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         next(new BadRequestError('Не правильно переданы данные'));
@@ -50,7 +50,7 @@ module.exports.setLikeCard = (req, res, next) => {
     { new: true },
   )
     .orFail(() => { throw new NotFoundError('Карточка для лайка не найдена'); })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
         next(new BadRequestError('Не правильно переданы данные'));
@@ -65,7 +65,7 @@ module.exports.removeLikeCard = (req, res, next) => {
     { new: true },
   )
     .orFail(() => { throw new NotFoundError('Карточка для удаления лайка не найдена'); })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
         next(new BadRequestError('Не правильно переданы данные'));
