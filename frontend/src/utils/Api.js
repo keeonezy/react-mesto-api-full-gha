@@ -125,7 +125,7 @@ class Api {
 
 // Данные для получения доступа к API предоставленный практикумом
 const api = new Api({
-    baseUrl: "https://keeonenew.nomoredomains.xyz",
+    baseUrl: "https://b-keeonenew.nomoredomains.xyz",
     // baseUrl: "http://localhost:3001",
     headers: {
         // authorization: "2b912826-2e01-41bd-a2c8-a9cb197269a0",
