@@ -50,6 +50,7 @@ class Api {
             method: "PATCH",
             headers: {
                 authorization: `Bearer ${this._token}`,
+                'Content-Type': 'application/json',
               },
             body: JSON.stringify({
                 name: data.name,
@@ -64,6 +65,7 @@ class Api {
             method: "PATCH",
             headers: {
                 authorization: `Bearer ${this._token}`,
+                'Content-Type': 'application/json',
               },
             body: JSON.stringify({
                 avatar: data.avatar
@@ -77,6 +79,7 @@ class Api {
             method: "POST",
             headers: {
                 authorization: `Bearer ${this._token}`,
+                'Content-Type': 'application/json',
               },
             body: JSON.stringify({
                 name: data.name,
@@ -91,6 +94,7 @@ class Api {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${this._token}`,
+                'Content-Type': 'application/json',
               },
         })
     }
@@ -101,6 +105,7 @@ class Api {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${this._token}`,
+                'Content-Type': 'application/json',
               },
         })
     }
@@ -111,6 +116,7 @@ class Api {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${this._token}`,
+                'Content-Type': 'application/json',
               },
         })
     }
