@@ -50,6 +50,7 @@ function App() {
       auth.getToken(jwt)
         .then((res) => {
           if (res) {
+            api.setToken(jwt);
             setEmail(res.data.email);
             setLoggedIn(true);
             navigate("/", { replace: true });
@@ -87,6 +88,7 @@ function App() {
 
   // Выйти с аккаунта
   function handleSignOut() {
+    api.setToken(null);
     localStorage.removeItem("jwt");
     setEmail("");
     setLoggedIn(false);
@@ -98,6 +100,7 @@ function App() {
     auth.signIn(email, password)
       .then((data) => {
         if (data.token) {
+          api.setToken(data.token)
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
           setEmail(email);

@@ -1,7 +1,7 @@
 class Api {
     constructor({ baseUrl, headers }) {
         this._baseUrl = baseUrl;
-        this._headers = headers;
+        this._token = null;
     }
 
     // Проверяем на ошибку
@@ -17,17 +17,30 @@ class Api {
         return fetch(url, options).then(this._checkResponse)
     }
 
+    setToken(token) {
+        this._token = token;
+    };
+
+    getAppinfo() {
+        return Promise.all([this.getInitialCards(), this.getUserInfo()])
+    }
+
     // Получение информации о пользователе с API
     getUserInfo() {
+
         return this._request(`${this._baseUrl}/users/me`, {
-            headers: this._headers
+            headers: {
+                authorization: `Bearer ${this._token}`,
+            },
         })
     }
 
     //загрузка карточек
     getInitialCards() {
         return this._request(`${this._baseUrl}/cards`, {
-            headers: this._headers
+            headers: {
+                authorization: `Bearer ${this._token}`,
+              },
         })
     }
 
@@ -35,7 +48,9 @@ class Api {
     editUserInfo(data) {
         return this._request(`${this._baseUrl}/users/me`, {
             method: "PATCH",
-            headers: this._headers,
+            headers: {
+                authorization: `Bearer ${this._token}`,
+              },
             body: JSON.stringify({
                 name: data.name,
                 about: data.post
@@ -47,7 +62,9 @@ class Api {
     editUserAvatar(data) {
         return this._request(`${this._baseUrl}/users/me/avatar`, {
             method: "PATCH",
-            headers: this._headers,
+            headers: {
+                authorization: `Bearer ${this._token}`,
+              },
             body: JSON.stringify({
                 avatar: data.avatar
             })
@@ -58,7 +75,9 @@ class Api {
     addNewCard(data) {
         return this._request(`${this._baseUrl}/cards`, {
             method: "POST",
-            headers: this._headers,
+            headers: {
+                authorization: `Bearer ${this._token}`,
+              },
             body: JSON.stringify({
                 name: data.name,
                 link: data.link
@@ -70,7 +89,9 @@ class Api {
     deleteCard(id) {
         return this._request(`${this._baseUrl}/cards/${id}`, {
             method: "DELETE",
-            headers: this._headers
+            headers: {
+                authorization: `Bearer ${this._token}`,
+              },
         })
     }
 
@@ -78,7 +99,9 @@ class Api {
     setlike(id) {
         return this._request(`${this._baseUrl}/cards/${id}/likes`, {
             method: "PUT",
-            headers: this._headers
+            headers: {
+                authorization: `Bearer ${this._token}`,
+              },
         })
     }
 
@@ -86,7 +109,9 @@ class Api {
     deleteLike(id) {
         return this._request(`${this._baseUrl}/cards/${id}/likes`, {
             method: "DELETE",
-            headers: this._headers
+            headers: {
+                authorization: `Bearer ${this._token}`,
+              },
         })
     }
 

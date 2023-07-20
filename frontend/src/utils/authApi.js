@@ -37,13 +37,20 @@ class Auth {
             },
             body: JSON.stringify({ email, password })
         })
+            .then((data) => {
+                localStorage.getItem('jwt', data.token)
+                return data;
+            })
     };
 
     // Проверка токена
-    getToken(token) {
+    getToken() {
+        const token = localStorage.getItem('jwt');
+
         return this._request(`${this._baseUrl}/users/me`, {
             method: "GET",
             headers: {
+                'Accept': 'application/json',
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             },
