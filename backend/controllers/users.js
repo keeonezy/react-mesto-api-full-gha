@@ -7,6 +7,8 @@ const BadRequestError = require('../errors/status-400');
 const NotFoundError = require('../errors/status-404');
 const ConflictError = require('../errors/status-409');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports.createUser = (req, res, next) => {
   bcrypt.hash(String(req.body.password), 10)
     .then((hash) => User.create({
@@ -39,7 +41,7 @@ module.exports.login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'SECRET__HEHE', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'SECRET__HEHE', { expiresIn: '7d' });
       res.send({ token });
     })
     .catch(next);
