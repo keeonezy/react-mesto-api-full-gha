@@ -18,7 +18,3 @@
 * Установить зависимости npm i
 * Запустить локально: npm run start
 * Собрать проект: npm run build
-
-**Gh pages**
-
-https://keeonezy.github.io/react-mesto-auth/index.html

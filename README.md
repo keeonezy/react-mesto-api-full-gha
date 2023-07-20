@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.18.246
+IP 158.160.18.246
 
 Frontend https://keeonenew.nomoredomains.xyz
 
