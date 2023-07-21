@@ -41,6 +41,7 @@ module.exports.login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
+      // Если не будет env, то будет использоваться dev ключ
       const token = jwt.sign({ _id: user._id }, NODE_ENV !== 'production' ? 'SECRET__HEHE' : JWT_SECRET, { expiresIn: '7d' });
       res.send({ token });
     })
