@@ -7,7 +7,7 @@ const NotFoundError = require('../errors/status-404');
 
 module.exports.getCards = (req, res, next) => {
   Card
-    .find({})
+    .find({}).sort({ createdAt: -1 })
     .then((cards) => res.send(cards))
     .catch(next);
 };
